@@ -1,0 +1,244 @@
+1)
+package sda;
+
+public class Baking_Cake {
+   int temp_c =180;
+   int time_m = 30;
+   
+   public void bake(int temp_c, int time_m){
+   System.out.println("The cake is being baked at " +temp_c+ "degree"+ "for"+ time_m + "mintes");
+   }
+}
+
+package sda;
+
+public class Cleaning_Kitchen {
+   public void cleanKitchen(){
+       System.out.println("Lastly The kitchen is being cleaned");
+    }
+}
+
+
+package sda;
+
+public class Decorate_Cake {
+    public void decorate(){
+     System.out.println("Decorating the cake with mango topping…");
+    }
+}
+
+
+package sda;
+
+public class Ingredient_Preparation {
+    
+    
+
+    public void makeMangoCake(){
+    String[] ingredients = {"Flour", "Eggs", "Sugar", "Butter", "Mango"};
+     System.out.print("The ingredients are " + ingredients);
+        
+    }
+    public void prepareIngredients(){
+        System.out.print("Measuring Flour");
+        System.out.print("Measuring Eggs");
+        System.out.print("Measuring Sugar");
+        System.out.print("Measuring Butter");
+        System.out.print("Measuring Mango");
+    }
+}
+
+
+package sda;
+
+public class Mango_Topping {
+    public void topping(){
+    System.out.println("The mango toppings are being prepared");
+    }
+}
+
+package sda;
+
+public class Mixing_Ingredients {
+    public void mix(){
+    System.out.println("Mixing flour, eggs, sugar, and butter….");
+    
+    
+    }
+}
+
+
+package sda;
+
+public class SDA_WEEK_5 {
+
+    public static void main(String[] args) {
+        
+        System.out.println("Step 1\n");
+       Ingredient_Preparation IP = new Ingredient_Preparation();
+        IP.prepareIngredients();
+        
+        System.out.println("\nStep 2\n");
+        Mixing_Ingredients mi = new Mixing_Ingredients();
+        mi.mix();
+        
+        System.out.println("\nStep 3\n");
+        Baking_Cake bc = new Baking_Cake();
+        bc.bake(180,30);
+        
+        System.out.println("\nStep 4\n");
+        Mango_Topping mt = new Mango_Topping();
+        mt.topping();
+        
+        System.out.println("\nStep 5\n");
+        Decorate_Cake dc= new Decorate_Cake();
+        dc.decorate();
+        
+        System.out.println("\nStep 6\n");
+        Cleaning_Kitchen ck = new Cleaning_Kitchen();
+        ck.cleanKitchen();
+    }
+}
+//Reasoning: In solid principle s stands for Single Responsibility Principle which states that a single class only perform a single functionality but in this task given 
+//it was violating that principle as all the functionalities were performed by a single class so the solution is creating classes for every functionality.
+
+2)
+package sda_1;
+
+public class Lang_info implements Language{
+
+    @Override
+    public void getName() {
+        System.out.print("This is a complex language");
+    }
+    
+
+package sda_1;
+
+public interface Language {
+    public void getName();
+}
+
+package sda_1;
+
+public class Programming_Lang implements Language{
+
+    @Override
+    public void getName() {
+        System.out.print("Java");
+    }
+    
+}
+
+package sda_1;
+
+public class main {
+      public static void main(String[] args) {
+          
+      Programming_Lang pl = new Programming_Lang();
+      pl.getName();
+      System.out.println("\n");
+      Lang_info li = new Lang_info();
+      li.getName();
+}}
+//this is open/close principle of solid principle because it uses interface and have same methods with different functionalities.
+
+3)
+package sda_2;
+
+public interface Animal {
+    public void Sound();
+}
+
+package sda_2;
+
+public class Cat implements Animal{
+
+    @Override
+    public void Sound() {
+    System.out.println("Meaow");
+    }
+}
+
+package sda_2;
+
+public class RobotCat implements Animal {
+
+    @Override
+    public void Sound() {
+         System.out.println("Robot sound");
+    }
+    }
+
+package sda_2;
+
+public class Main {
+      public static void main(String[] args) {
+      Animal cat = new Cat();
+      Animal robotCat = new RobotCat();
+      cat.Sound();
+      System.out.println("\n");
+      robotCat.Sound();
+      }
+}
+//java doesnot allow multiple classes so we use interface for that.
+
+4)
+package sda_3;
+
+public interface Course {
+    
+    void teach();
+
+
+}
+
+package sda_3;
+
+public class Main {
+  
+    public static void main(String[] args) {
+        Course math = new MathCourse();
+        Student student = new Student(math);
+        student.startLearning(); 
+       Course science = new ScienceCourse();
+        student = new Student(science);
+        student.startLearning(); // Output: Teaching Science
+    }
+}
+
+package sda_3;
+
+
+   class MathCourse implements Course {
+    @Override
+    public void teach() {
+        System.out.println("Teaching Math");
+    }
+}
+
+package sda_3;
+
+   class ScienceCourse implements Course {
+    @Override
+    public void teach() {
+        System.out.println("Teaching Science");
+    }
+}
+ 
+
+package sda_3;
+
+public class Student {
+    private Course course;
+
+  
+    public Student(Course course) {
+        this.course = course;
+    }
+
+    public void startLearning() {
+        course.teach();
+    }
+}
+
