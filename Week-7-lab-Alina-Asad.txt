@@ -1,0 +1,41 @@
+package sda_week_7;
+
+
+public class DatabaseConnectionManager {
+   
+    private static DatabaseConnectionManager ConnectionInstance;
+    
+    private DatabaseConnectionManager(){
+        
+    }
+    public static DatabaseConnectionManager getInstance(){
+        if (ConnectionInstance== null){
+            ConnectionInstance =new DatabaseConnectionManager ();
+        }
+    return ConnectionInstance;
+}
+        public void executeQuery(String query) {
+
+        System.out.println("Executing query: " + query);
+    }
+} 
+
+package sda_week_7;
+
+
+public class main {
+   
+    public static void main(String[] args) {
+        DatabaseConnectionManager dbManager1 = DatabaseConnectionManager.getInstance();
+        dbManager1.executeQuery("SELECT * FROM users");
+
+        DatabaseConnectionManager dbManager2 = DatabaseConnectionManager.getInstance();
+        dbManager2.executeQuery("SELECT * FROM products");
+
+        if (dbManager1 == dbManager2) {
+            System.out.println("dbManager1 and dbManager2 are same");
+        } else 
+            System.out.println("Are different");
+}
+   
+}
