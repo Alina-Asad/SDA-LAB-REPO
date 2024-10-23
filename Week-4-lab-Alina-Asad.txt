@@ -1,0 +1,43 @@
+task-4
+package abstractionn;
+
+public class Abstractionn {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        sportsman s=new cricketer();
+        s.play();
+        sportsman d=new tennisplayer();
+        d.play();
+    }
+    
+}
+
+package abstractionn;
+
+public class cricketer extends sportsman{
+      @Override
+    public  void play(){
+        System.out.println("plays cricket..");
+}
+}
+
+package abstractionn;
+
+
+abstract class sportsman {
+    abstract void play();
+  
+}
+
+package abstractionn;
+
+public class tennisplayer extends sportsman{
+   @Override
+    void play(){
+        System.out.println("plays tenis");
+}
+}
