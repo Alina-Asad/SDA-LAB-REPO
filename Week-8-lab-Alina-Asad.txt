@@ -1,0 +1,104 @@
+Lab Task 1 Facade patterns 
+main class 
+package facade_Pattern;
+public class Week8_main {
+
+    public static void main(String[] args) {
+       Rectangle r = new Rectangle();
+       Circle c = new Circle();
+       Square s = new Square();
+       
+       shapeDrawingAppFacade sdaf = new shapeDrawingAppFacade(c , s , r);
+       sdaf.draw();
+       
+    }
+}
+
+facade main class
+
+package facade_Pattern;
+
+public class shapeDrawingAppFacade {
+    private Circle circle;
+    private Square square;
+    private Rectangle rectangle;
+    
+    public shapeDrawingAppFacade(Circle c , Square s , Rectangle r ){
+        this.circle= c;
+        this.rectangle=r;
+        this.square=s;
+    }
+    
+    public void draw(){
+        System.out.println("Drawing all the shapes");
+        circle.drawShape();
+        rectangle.drawShape();
+        square.drawShape();
+    }
+}
+
+subclasses
+
+public class Circle {
+    public void drawShape(){
+        System.out.println("Drawing circle");
+    }
+}
+
+public class Rectangle {
+      public void drawShape(){
+        System.out.println("Drawing rectangle");
+    }
+}
+
+
+public class Square {
+      public void drawShape(){
+        System.out.println("Drawing square");
+    }
+}
+ 
+lab task 2 Adapter 
+package adapter_Pattern;
+
+public class Adapter {
+    
+    public static void main(String[] args) {
+      USPlug usPlug = new USPlug();
+      
+        // Create a SocketAdapter which adapts the USPlug to the EuropeanSocket interface
+        EuropeanSocket socketAdapter = new SocketAdapter(usPlug);
+        
+        // Interact with the European socket interface
+        socketAdapter.plugIn();
+}
+}
+package adapter_Pattern;
+
+public interface EuropeanSocket {
+     void plugIn();
+
+}
+package adapter_Pattern;
+
+    public class SocketAdapter implements EuropeanSocket {
+    private USPlug usPlug;
+
+    // Constructor that takes a USPlug instance
+    public SocketAdapter(USPlug usPlug) {
+        this.usPlug = usPlug;
+    }
+
+    // Implementing the plugIn method from the EuropeanSocket interface
+    @Override
+    public void plugIn() {
+        usPlug.insertTwoProngPlug(); // Adapt US plug functionality
+        System.out.println("Adapted US plug to fit the European socket.");
+}
+}
+package adapter_Pattern;
+
+public class USPlug {
+    public void insertTwoProngPlug() {
+        System.out.println("US two-prong plug is inserted.");}
+}
