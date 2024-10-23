@@ -1,0 +1,57 @@
+lab 3
+package airlineticketsystem;
+
+public class AirlineTicketSystem {
+
+   
+    public static void main(String[] args) {
+        // TODO code application logic here
+        businessClass b=new businessClass();
+        firstClass f=new firstClass();
+        economyClass e=new economyClass();
+        System.out.println(b.calculateSeatPrice());
+        System.out.println(f.calculateSeatPrice());
+        System.out.println(e.calculateSeatPrice());
+    }
+    
+}
+
+package airlineticketsystem;
+
+public class businessClass {
+    int numberOfrSeats=20;
+    int priceperseat=1500;
+
+    
+    public int calculateSeatPrice(){
+        return numberOfrSeats*priceperseat;
+    }
+}
+
+public class economyClass {
+    int numberOfSeats=30;
+    int priceperseat=500;
+
+    public int calculateSeatPrice(){
+        return numberOfSeats*priceperseat;
+    }
+}
+
+package airlineticketsystem;
+
+
+public class firstClass {
+    int numberOfrSeats=40;
+    int priceperseat=1000;
+
+    
+    public int calculateSeatPrice(){
+        return numberOfrSeats*priceperseat;
+    }
+}
+public class Seat {
+    public int calculateSeatPrice(){
+        return 0;
+    }
+}
+
